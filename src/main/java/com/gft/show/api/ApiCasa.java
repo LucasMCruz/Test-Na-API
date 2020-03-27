@@ -67,7 +67,7 @@ public class ApiCasa {
 	@PostMapping()
 	public ResponseEntity<Void> salvar(@Valid@RequestBody CasaShow casa) {
 		System.out.println("Salvei");
-		casa = casaSe.salvar(casa, null);
+		casa = casaSe.salvar(casa);
 		
 		URI uri =ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{codigo}").buildAndExpand(casa.getCodigo()).toUri();

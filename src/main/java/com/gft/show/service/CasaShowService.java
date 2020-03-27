@@ -3,6 +3,7 @@ package com.gft.show.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import com.gft.show.repository.CasaShowRepository;
 
 @Service
 public class CasaShowService {
+	
 	
 	@Autowired
 	private CasaShowRepository casaRe;
@@ -33,7 +35,7 @@ public class CasaShowService {
 		return casaRe.findAll(Sort.by(Sort.Direction.DESC, "nome"));
 	}
 	
-	public CasaShow salvar(CasaShow casas, RedirectAttributes attributes) {
+	public CasaShow salvar(CasaShow casas) {
 		System.out.println("he"+casas.getCodigo());
 		if(casas.getCodigo() !=null) {
 			Optional<CasaShow> a = casaRe.findById(casas.getCodigo());
