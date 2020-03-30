@@ -1,12 +1,17 @@
 package com.gft.show.controller;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.List;
+
+import org.assertj.core.util.Arrays;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.internal.runners.JUnit4ClassRunner;
@@ -60,7 +65,7 @@ public class CasadeshowApplicationTests {
 		System.out.println("iniciando");
 		
 	}
-	
+
 	@After
 	public void setDown() {
 		System.out.println("Finalizado os testes");
@@ -72,19 +77,37 @@ public class CasadeshowApplicationTests {
 		this.mvc.perform(get(url)).andExpect(status().isOk());
 	}
 	
-	@Test
-	public void deveValidarNomeCasaShow() {
+	/*@Test
+	public void deveValidarNomeCasaShow(){
+		List<CasaShow> casa = Arrays.asList(new CasaShow());
+		//assertEquals("Clubinh", casaService.buscarPorNome("Clubinh"));
+		Assert.assertEquals(casa, casaService.buscarPorNome("Brasil"));
 		
-		assertEquals("Fabrique", casaService.buscarPorNome("Fabrique").getNome());
-	}
+	}*/
 	
 	@Test
 	public void deveValidarAntesdeSalvar() {
 		CasaShow casa = new CasaShow();
 		casa.setEndereco("av brasil");
-		casa.setNome("Brasil");
+		casa.setNome("Clubinho");
 		assertNotNull(casaService.salvar(casa));
-
 	}
+	
+	@Test
+	public void deveDeletarUmaCasa() throws Exception {
+		
+		Mockito.when(casaSe.deletar((long) 2));
+	}
+	
+	/*@Test
+	public void deveValidarNomeCasaShow() {
+		CasaShow casa = new CasaShow();
+		casa.setEndereco("av brasil");
+		casa.setNome("Clubinho");
+		
+		Mockito.when(casaSe.buscarPorNome(casa.getNome())).thenReturn("Clubinho");
+		assertEquals("Clubinho", casaService.buscarPorNome("Clubinho").getNome());
+	}*/
+	
 
 }

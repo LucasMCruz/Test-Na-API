@@ -9,7 +9,7 @@ import com.gft.show.model.CasaShow;
 
 public interface CasaShowRepository extends JpaRepository<CasaShow, Long>{
 	
-	public CasaShow findByNome(String nome);
+	public List<CasaShow> findByNome(String nome);
 
 	public void save(String string);
 

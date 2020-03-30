@@ -57,10 +57,10 @@ public class CasaShowService {
 		return casa;
 	}
 	
-	public CasaShow buscarPorNome(String nome) {
-		CasaShow casa = casaRe.findByNome(nome);
+	public List<CasaShow> buscarPorNome(String nome) {
+		List<CasaShow> casa = casaRe.findByNome(nome);
 		
-		if(casa == null) {
+		if(casa.isEmpty()) {
 			throw new CasaNao("Casa Na0 existe");
 			}
 		
@@ -73,8 +73,10 @@ public class CasaShowService {
 		
 		
 	}
-	public void deletar(Long codigo) {
+	public String deletar(Long codigo) {
 		casaRe.deleteById(codigo);
+		return "deletado";
+		
 	}
 
 	public void salvaar(String string, CasaShow casas) {

@@ -15,6 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.gft.show.service.CasaShowService;
 
 @Entity
 public class CasaShow {
@@ -35,7 +36,20 @@ public class CasaShow {
 	private List<Evento> evento;
 	
 
+	@NotEmpty(message = "Descrição é obrigatoria")
+	@Size(max = 60, message = "A descrição nao pode conter mais de 60 caracteres")
+	private String endereco;
 	
+
+	/*public CasaShow(long l, String nome, String endereco) {
+		
+		this.codigo = l;
+		this.nome = nome;
+		this.endereco = endereco;
+	
+	}*/
+
+
 	public List<Evento> getEvento() {
 		return evento;
 	}
@@ -45,9 +59,6 @@ public class CasaShow {
 		this.evento = evento;
 	}
 
-	@NotEmpty(message = "Descrição é obrigatoria")
-	@Size(max = 60, message = "A descrição nao pode conter mais de 60 caracteres")
-	private String endereco;
 
 	public Long getCodigo() {
 		return codigo;
