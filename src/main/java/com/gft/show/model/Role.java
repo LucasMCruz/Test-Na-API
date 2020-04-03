@@ -1,4 +1,4 @@
-/*package com.gft.show.model;
+package com.gft.show.model;
 
 import java.util.List;
 
@@ -10,6 +10,12 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 public class Role implements GrantedAuthority{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	private String nomeRole;
 	
@@ -33,4 +39,3 @@ public class Role implements GrantedAuthority{
 	
 	
 }
-*/

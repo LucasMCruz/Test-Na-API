@@ -21,11 +21,19 @@
                             <th> </th>
                         </tr>
                     </thead>
-                    <tbody>
                     
-                        
-                    </tbody>
+                    
                 </table>
+                    <div class="list-group-item ">
+				      <div class=" direita" th:each="historico : ${vendas}" > 
+				         <h5 class="card-title">Histórico do <span sec:authentication="principal.username"></span></h5>
+				         <p class="card-text" th:text="|Show do ${historico.evento.nomeevento}|"></p>
+				         <p class="card-text" th:text="|Local do Evento: ${historico.evento.cadastrocasa.nome}|"></p>
+				         <p class="card-text" th:text="|Data do Evento: ${{historico.evento.dataevento}}|"></p>
+				         <p class="card-text" th:text="|Quantidade de ingressos comprados: ${historico.ingressosComprados}|"></p>
+				         <hr>
+				      </div>
+				    </div>
             </div>
         </div>
   

@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Historico {
@@ -14,7 +17,11 @@ public class Historico {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Long IDevento;
+	@ManyToOne
+	private Usuario usuario;
+	
+	@OneToOne
+	private Evento IDevento;
 	
 	private String evento;
 	
@@ -23,7 +30,7 @@ public class Historico {
 	private BigDecimal preco;
 	
 	public Historico(Long IDevento, String evento, int ingresso, BigDecimal valor) {
-		IDevento = IDevento;
+		IDevento  = IDevento;
 		this.evento = evento;
 		this.ingresso = ingresso;
 		this.preco = valor;
@@ -37,12 +44,7 @@ public class Historico {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getIDevento() {
-		return IDevento;
-	}
-	public void setIDevento(Long iDevento) {
-		IDevento = iDevento;
-	}
+
 	public String getEvento() {
 		return evento;
 	}
@@ -60,6 +62,19 @@ public class Historico {
 	}
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public Evento getIDevento() {
+		return IDevento;
+	}
+	public void setIDevento(Evento iDevento) {
+		IDevento = iDevento;
 	}
 	@Override
 	public int hashCode() {

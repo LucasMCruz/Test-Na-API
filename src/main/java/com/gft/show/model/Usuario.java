@@ -1,7 +1,13 @@
 package com.gft.show.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,10 +20,18 @@ public class Usuario{
 	
 	@JsonIgnore
 	private String password;
+	
 	private boolean adm;
-	//@ManyToMany
-	//@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name="user_id", referencedColumnName="username"), inverseJoinColumns = @JoinColumn(name="role_id", referencedColumnName="nomeRole"))
-	/*private List<Role> roles;
+	
+	@ManyToMany
+	@JoinTable(name = "usuarios_roles",
+	joinColumns = @JoinColumn(name="user_id",
+	referencedColumnName="username"), inverseJoinColumns = @JoinColumn(name="role_id",
+	referencedColumnName="nomeRole"))
+	private List<Role> roles;
+	
+	@OneToMany
+	private List<Historico> vendas;
 
 	public List<Role> getRoles() {
 		return roles;
@@ -25,7 +39,7 @@ public class Usuario{
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
-	}*/
+	}
 
 
 	public String getNome() {
